@@ -5,6 +5,7 @@ import AppControlsCounter from './components/AppControls/AppControlsCounter';
 import AppControlsDelete from './components/AppControls/AppControlsDelete';
 import AppControlsinputs from './components/AppControls/AppControlsinputs';
 import AppMealsList from './components/AppMealsList/AppMealsList';
+import AppModal from './components/AppModal/AppModal';
 const App = () => {
     const[meals,setMeals] = useState([])
     const[mealName,setMealName] = useState("");
@@ -22,7 +23,7 @@ const App = () => {
     const newMeals = oldMeals.concat(meal);
 
     if(calories <=0 || mealName === ""){
-      alert("must not be empty")
+     setOpenModal(true);
     }else{
       setMeals(newMeals)
     }
@@ -36,13 +37,19 @@ const App = () => {
     const newMeals = oldMeals.filter((meal)=>meal.id !== id);
 
     setMeals(newMeals);
+  };
+
+  const deleteAllMeals = () => {
+    setMeals([])
+
   }
 
   return (
  <div className='App'>
   <AppBar />
+    {openModal ? <AppModal setOpenModal={setOpenModal} /> : "" }
   <AppControlsCounter />
-  <AppControlsDelete />
+  <AppControlsDelete  deleteAllMeals = {deleteAllMeals} />
   < AppControlsinputs 
   addMealsHandler={addMealsHandler}
   mealName={mealName}
