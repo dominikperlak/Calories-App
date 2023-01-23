@@ -1,6 +1,7 @@
 {
-  "homepage": "https://dominikperlak.github.io/my-app",
-  "name": "my-app",
+  "homepage": "https://dominikperlak.github.io/calories-app",
+
+ "name": "calories-app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
